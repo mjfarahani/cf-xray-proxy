@@ -157,6 +157,7 @@ export async function handleUpgrade(
   workerSocket.accept();
 
   const backendHeaders = buildBackendUpgradeHeaders(request);
+  backendHeaders.set('Origin', backendUrl.origin);
   const maxAttempts = resolveMaxAttempts(env, backendOverride);
   let lastStatus: number | null = null;
   let lastError: unknown = null;
