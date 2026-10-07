@@ -86,6 +86,7 @@ export function parseWebSocketProtocolHeader(headerValue: string | null): Parsed
 export function buildBackendUpgradeHeaders(request: Request, upgradeValue = 'websocket'): Headers {
   const headers = new Headers(request.headers);
   headers.delete('Host');
+  headers.delete('Origin');
   headers.set('Connection', 'Upgrade');
   headers.set('Upgrade', upgradeValue);
   headers.delete(SEC_WEBSOCKET_EXTENSIONS_HEADER);
